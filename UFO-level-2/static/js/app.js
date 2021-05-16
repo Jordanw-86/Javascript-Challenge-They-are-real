@@ -16,3 +16,44 @@ data.forEach(function(ufoSighting){
     });
 });
 
+// creating a varaible for selection button
+
+var button = d3.select("#filter-btn");
+
+button.on("click", function(event){
+    d3.event.preventDefault();
+    tbody.html("");
+    var inputElement = d3.select("#datetime"); 
+    var inputValue = inputElement.property("value");
+    var cityInput=d3.select("#city").property("value");
+    var stateInput=d3.select("#state").property("value");
+    var countryInput=d3.select("#country").property("value");
+    var shapeInput=d3.select("#shape").property("value");
+    console.log(cityInput);
+
+    var filterData=tableData;
+    if (inputValue){
+        filterData = filterData.filter(row => row.datetime === inputValue); 
+    }
+    if (cityInput){
+        filterData = filterData.filter(row => row.city === cityInput);       
+    }
+    if (stateInput){
+        filterData = filterData.filter(row => row.state === stateInput);       
+    }
+    if (countryInput){
+        filterData = filterData.filter(row => row.country === countryInput);       
+    }
+    if (shapeInput){
+        filterData = filterData.filter(row => row.shape === shapeInput);       
+    }
+    
+
+    filterData.forEach(function(dateData){
+        var row=tbody.append("tr");
+        Object.entries(dateData).forEach(function([key,value]){
+        var cell=tbody.append("td");
+        cell.text(value);
+            });
+        });
+    });
