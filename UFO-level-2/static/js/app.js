@@ -5,6 +5,7 @@ console.log(tableData);
 var tbody = d3.select("tbody");
 console.log(data);
 
+//sighting for UFO 2
 
 data.forEach(function(ufoSighting){
     console.log(ufoSighting);
@@ -31,6 +32,9 @@ button.on("click", function(event){
     var shapeInput=d3.select("#shape").property("value");
     console.log(cityInput);
 
+
+    // filterind ime if day, city, country, shape
+
     var filterData=tableData;
     if (inputValue){
         filterData = filterData.filter(row => row.datetime === inputValue); 
@@ -48,7 +52,7 @@ button.on("click", function(event){
         filterData = filterData.filter(row => row.shape === shapeInput);       
     }
     
-
+// adding  data to tables
     filterData.forEach(function(dateData){
         var row=tbody.append("tr");
         Object.entries(dateData).forEach(function([key,value]){

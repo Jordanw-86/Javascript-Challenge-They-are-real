@@ -6,7 +6,7 @@ console.log(tableData);
 var tbody = d3.select("tbody");
 console.log(data);
 
-
+//each ufo sighting
 
 data.forEach(function(ufoSighting){
     console.log(ufoSighting);
@@ -18,6 +18,7 @@ data.forEach(function(ufoSighting){
     });
 });
 
+// creating button 
 
 var button = d3.select("#filter-btn");
 
@@ -29,6 +30,7 @@ var inputElement = d3.select("#datetime");
 var inputValue = inputElement.property("value");
 
 
+//filtering sightings and adding them to tables
 
 var filteredData = tableData.filter(tableData => tableData.datetime === inputValue);
 filteredData.forEach(function(dateData){
